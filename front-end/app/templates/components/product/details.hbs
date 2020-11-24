@@ -1,0 +1,27 @@
+<div class="product-details">
+  <section>
+    <h3>{{@name}}</h3>
+    <div class="text-warning">
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star"></i>
+      <i class="fa fa-star-half-o"></i>
+    </div>
+  </section>
+
+  <section>
+    <del class="small text-black-50">${{@price.original}}</del>
+    <i class="text-danger font-weight-bold">${{@price.current}}</i>
+  </section>
+
+  <div>
+    <h5>Color</h5>
+    <div class="product-colors active-{{@color}}">
+      {{#each @colors as |colorInfo|}}
+        <span class="product-color {{concat 'color-' colorInfo.color}}"
+          {{action "changeColor" colorInfo.color}}></span>
+      {{/each}}
+    </div>
+  </div>
+</div>

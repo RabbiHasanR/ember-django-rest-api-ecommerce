@@ -1,0 +1,18 @@
+<GeneralContainer>
+  <div class="product item-details-page">
+    <Product::Image @src={{this.productImage}}/>
+    <Product::Details 
+    @name={{this.model.name}}
+    @price={{this.model.price}}
+    @colors={{this.model.colors}}
+    @color={{this.color}} 
+    @onChangeColor={{action "onChangeColor"}}/>
+  </div>
+
+  <h5 class="mt-5">Features</h5>
+  <ul>
+    {{#each this.model.features as |feature|}}
+      <li>{{feature}}</li>
+    {{/each}}
+  </ul>
+</GeneralContainer>
