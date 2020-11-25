@@ -9,18 +9,38 @@
     <li class="breadcrumb-item">Shopping Cart</li>
   </ol>
 
+ {{#each this.cart.items as |item|}}
+    {{log 'cart:' item.count}}
+    <div class="cart-item d-flex align-items-center">
+      <div class="cart-item-thumbnail">
+        <img src={{item.image}} alt="">
+      </div>
+      <div class="ml-3">
+        <h4>{{item.name}}</h4>
+        <i class="font-weight-bold">{{currency item.price}}</i>
+      </div>
+      <input
+        type="number"
+        class="ml-auto"
+        value={{item.count}}
+        {{on "input" (fn (action "updateItemCount" item))}}
+      >
+      <button {{action "removeItem" item}}>X</button>
+    </div>
+  {{/each}}
+
   <section class="w-50 ml-auto text-right mb-5">
     <div class="row">
       <span class="col">Subtotal</span>
-      <span class="col">{{this.subtotal}}</span>
+      <span class="col">{{currency this.subtotal}}</span>
     </div>
     <div class="row">
       <span class="col">Tax</span>
-      <span class="col">{{this.tax}}</span>
+      <span class="col">{{currency this.tax}}</span>
     </div>
     <div class="row">
       <span class="col">Total</span>
-      <span class="col">{{this.total}}</span>
+      <span class="col">{{currency this.total}}</span>
     </div>
   </section>
 

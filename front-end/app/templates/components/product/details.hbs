@@ -10,11 +10,13 @@
     </div>
   </section>
 
-  <section>
-    <del class="small text-black-50">${{@price.original}}</del>
-    <i class="text-danger font-weight-bold">${{@price.current}}</i>
+  <section class={{unless @isDetails "h4"}}>
+    <del class="small text-black-50">{{currency @price.original}}</del>
+    <i class="text-danger font-weight-bold">{{currency @price.current}}</i>
   </section>
-
+  
+  {{#if @isDetails}}
+  <div class="d-flex justify-content-between align-items-end">
   <div>
     <h5>Color</h5>
     <div class="product-colors active-{{@color}}">
@@ -24,4 +26,12 @@
       {{/each}}
     </div>
   </div>
+     <button class="btn btn-info" type="button" {{action 'addToCart'}}>
+        <i class="fa fa-shopping-cart mr-1"></i>
+        Add to cart
+      </button>
+    </div>
+  {{/if}}
+
+
 </div>

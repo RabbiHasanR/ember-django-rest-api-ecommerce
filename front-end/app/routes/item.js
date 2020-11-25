@@ -11,8 +11,9 @@ export default Route.extend({
 
     setupController(controller, model) {
         this._super(controller, model);
-        // console.log('item route:',model);
         controller.set('model', model);
         controller.set('color', model.colors[0].color);
+        const image = model.colors.find(({ color }) => color === controller.get('color')).image;
+        controller.set('productImage', image);
     },
 });
