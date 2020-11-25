@@ -5,7 +5,8 @@ export default Route.extend({
     model(params) {
         const { item_id } = params;
         console.log('item route:',item_id)
-        const product = products.find(({id}) => id === item_id);
+        //const product = products.find(({id}) => id === item_id);
+        const product = this.store.findRecord('product', item_id)
         return product;
     },
 
