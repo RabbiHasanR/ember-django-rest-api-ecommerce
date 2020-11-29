@@ -1,9 +1,9 @@
 import Service from '@ember/service';
 import { A } from '@ember/array';
+import { computed } from '@ember/object';
 
 class Item {
   count;
-
   name;
   color;
   image;
@@ -63,4 +63,18 @@ export default Service.extend({
   empty() {
     this.items.clear();
   },
+
+  subtotal: computed('items.@each.count', function() {
+    return this.items.reduce((acc, item) => {
+        return acc + item.price * item.count;
+    }, 0);
+  }),
+
+  tax: computed('items.@each.count', function() {
+      return 0.09 * this.subtotal;
+  }),
+
+  total: computed('items.@each.count', function() {
+      return this.subtotal + this.tax;
+  })
 });

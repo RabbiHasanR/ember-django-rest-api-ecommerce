@@ -1,20 +1,24 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
+// import { computed } from '@ember/object';
 
 export default Controller.extend({
     cart: service('shopping-cart'),
 
-    get subtotal() {
-        return this.cart.items.reduce((acc, item) => {
-            return acc + item.price * item.count;
-        }, 0);
-    },
-    get tax() {
-        return 0.09 * this.subtotal;
-    },
-    get total() {
-        return this.subtotal + this.tax;
-    },
+    // subtotal: computed('cart.items.@each.count', function() {
+    //     return this.cart.items.reduce((acc, item) => {
+    //         return acc + item.price * item.count;
+    //     }, 0);
+    // }),
+
+    // tax: computed('cart.items.@each.count', function() {
+    //     return 0.09 * this.subtotal;
+    // }),
+
+    // total: computed('cart.items.@each.count', function() {
+    //     return this.subtotal + this.tax;
+    // }),
+    
 
     actions: {
         updateItemCount(item, event) {

@@ -31,7 +31,7 @@ class Feature(models.Model):
 class Color(models.Model):
     product = models.ForeignKey(Product, related_name='colors', on_delete=models.CASCADE)
     color = models.CharField(max_length=100)
-    image = models.ImageField(max_length=None,upload_to='products')
+    image = models.ImageField(max_length=None,upload_to='images')
 
     def __str__(self):
         return self.color

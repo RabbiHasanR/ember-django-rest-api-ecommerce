@@ -1,0 +1,27 @@
+<h1>Order page</h1>
+<LinkTo @route="index">
+    Home
+</LinkTo>
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="name">Name</label>
+      {{input type="text" value=this.model.name class="form-control" id="name" placeholder="Enter your name"}}
+    </div>
+    <div class="form-group">
+      <label for="email">Email address</label>
+      {{input type="email" value=this.model.email class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"}}
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      {{input type="text" value=this.model.address class="form-control" id="address" placeholder="Enter your address"}}
+    </div>
+    <div class="form-group">
+      <label for="address">Total Price</label>
+      {{log this.cart.total}}
+      <span>{{this.cart.total}}</span>
+    </div>
+
+    <button {{action "createOrder" this.model}} class="btn btn-primary">Submit</button>
+  </form>
+</div>

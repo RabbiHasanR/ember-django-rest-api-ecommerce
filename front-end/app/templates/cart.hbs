@@ -32,19 +32,22 @@
   <section class="w-50 ml-auto text-right mb-5">
     <div class="row">
       <span class="col">Subtotal</span>
-      <span class="col">{{currency this.subtotal}}</span>
+      <span class="col">{{currency this.cart.subtotal}}</span>
     </div>
     <div class="row">
       <span class="col">Tax</span>
-      <span class="col">{{currency this.tax}}</span>
+      <span class="col">{{currency this.cart.tax}}</span>
     </div>
     <div class="row">
       <span class="col">Total</span>
-      <span class="col">{{currency this.total}}</span>
+      <span class="col">{{currency this.cart.total}}</span>
     </div>
   </section>
 
-  <button type="button" class="btn btn-success float-right">
+  {{!-- <button type="button" class="btn btn-success float-right">
     Check out
-  </button>
+  </button> --}}
+  <LinkTo @route="orders" class="btn btn-success float-right">
+    Check out
+  </LinkTo>
 </main>
