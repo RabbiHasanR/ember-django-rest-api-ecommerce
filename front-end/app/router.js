@@ -11,6 +11,11 @@ Router.map(function() {
   this.route('item', {path: '/item/:item_id'});
   this.route('not-found', {path: '/*path'});
   this.route('orders');
+  this.route('posts', function() {
+    this.route('new');
+    this.route('edit', {path: '/edit/:post_id'});
+    this.route('post', {path: ':post_id'});
+  })
 });
 
 export default Router;

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #local
     'products.apps.ProductsConfig',
     'orders.apps.OrdersConfig',
+    'posts.apps.PostsConfig',
 ]
 
 MIDDLEWARE = [

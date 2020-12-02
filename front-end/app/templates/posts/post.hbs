@@ -1,0 +1,12 @@
+<h1>Post Details</h1>
+<LinkTo @route="posts.edit" @model={{this.model.id}}>
+    Edit
+</LinkTo>
+<div>
+    <h3>Title: {{this.model.title}}</h3>
+    <h3>Author: {{this.model.author}}</h3>
+    <h3>Body: {{this.model.body}}</h3>
+    {{#if this.model.videoUrl}}
+    <iframe width="560" height="315" src={{this.model.deckedOutVideoUrl}} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {{/if}}
+</div>

@@ -23,5 +23,9 @@
     </div>
 
     <button {{action "createOrder" this.model}} class="btn btn-primary">Submit</button>
+
+    {{#if this.orderResponse}}
+      <h4>Thank you! Your order create successfully.</h4>
+    {{/if}}
   </form>
 </div>

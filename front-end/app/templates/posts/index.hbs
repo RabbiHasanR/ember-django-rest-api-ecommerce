@@ -1,0 +1,12 @@
+<h1>All Posts</h1>
+<LinkTo @route="posts.new">
+    Add new
+</LinkTo>
+<ul>
+{{#each this.model as |post|}}
+    <li><LinkTo @route="posts.post" @model={{post.id}}>
+        {{post.title}}
+    </LinkTo>
+    </li>
+{{/each}}
+</ul>

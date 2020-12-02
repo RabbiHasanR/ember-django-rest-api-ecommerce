@@ -51,11 +51,6 @@ export const products = [{
 //   "name": "rabbi",
 //   "email": "jasrabbi50@gmail.com",
 //   "address": "Dhaka",
-//   "total_price": 100.00,
-//   "items": [
-// "color": "red",
-// "count": 2,
-// "image": "http://127.0.0.1:8000/media/images/beats-solo-red_OcFZJsy.png",
-// "name": "Beats Solo Wireless Headphones",
-// "price": 99.98,        
-// ]
+//   "total_price": 1000.00,
+//   "items": [{"color": "red", "count": 10,"image": "/image/i.png", "name": "item1", "price": 10.00}, {"color": "black", "count": 5,"image": "/image/j.png", "name": "item2", "price": 9.00}]
+// }
