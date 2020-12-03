@@ -1,7 +1,10 @@
+{{#if this.isEditing}}
+  <PostForm @post={{this.model}} @postResponse={{this.postResponse}} @afterSave={{action 'doneEditing'}}/>
+{{else}}
+<button {{action 'edit' }}>Edit</button>
+<button {{action 'deletePost' this.model}}>Delete</button>
+{{/if}}
 <h1>Post Details</h1>
-<LinkTo @route="posts.edit" @model={{this.model.id}}>
-    Edit
-</LinkTo>
 <div>
     <h3>Title: {{this.model.title}}</h3>
     <h3>Author: {{this.model.author}}</h3>

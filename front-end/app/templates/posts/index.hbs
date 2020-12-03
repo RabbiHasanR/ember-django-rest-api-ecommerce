@@ -2,11 +2,99 @@
 <LinkTo @route="posts.new">
     Add new
 </LinkTo>
-<ul>
-{{#each this.model as |post|}}
-    <li><LinkTo @route="posts.post" @model={{post.id}}>
-        {{post.title}}
-    </LinkTo>
-    </li>
-{{/each}}
-</ul>
+{{!-- {{log this.pageNumber}}
+{{log this.pageSize}} --}}
+<button {{action 'createRandomPost'}}>Create Fake post</button>
+
+<div class="table-options">
+  <div class="table-option">
+    <span class="option-name">Current Page</span>
+    <button {{action 'previousPage'}}>Previous Page</button>
+    {{#each this.pages as |page index|}}
+      <LinkTo @route="posts" @query={{hash pageNumber=index}} @tagName="button">
+        <span class="{{if (is-equal this.pageNumber index) 'font-weight-bold h3'}}">
+          {{add-one index}}
+        </span>
+      </LinkTo>
+    {{/each}}
+    <button {{action 'nextPage'}}>Next Page</button>
+  </div>
+
+  <div class="table-option">
+    <span class="option-name">Page Size</span>
+    {{#each this.possiblePageSize as |newSize|}}
+      <button {{action 'cahngePageSize' newSize}} class="{{if (is-equal newSize this.pageSize) 'font-weight-bold h3'}}">{{newSize}}</button>
+    {{/each}}
+  </div>
+
+  <div class="table-option">
+    <span class="option-name">Columns Used</span>
+    {{#each this.availableColumns as |column|}}
+      <ToggleableItem @toggledList={{this.columnsUsed}} @toggleableItem={{column}}/>
+    {{/each}}
+  </div>
+</div>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      {{!-- @action={{action 'sortBy'}} --}}
+      {{#each this.columns as |column|}}
+        <SortableHeader @title={{column.title}} @sortProperty={{column.property}}  
+          @selectedSorts={{this.sortProps}} @isAsending={{this.isAsending}}
+          @moveLeft={{action 'moveLeft'}} @moveRight={{action 'moveRight'}}/>
+      {{/each}}
+      {{!-- <SortableHeader @title="Title" @sortProperty="title"  @selectedSorts={{this.sortProps}} @isAsending={{this.isAsending}}/>
+      <SortableHeader @title="Author" @sortProperty="author"  @selectedSorts={{this.sortProps}} @isAsending={{this.isAsending}}/>
+      <SortableHeader @title="Created" @sortProperty="createdAt" @selectedSorts={{this.sortProps}} @isAsending={{this.isAsending}}/>
+      <SortableHeader @title="Body" @sortProperty="body" @selectedSorts={{this.sortProps}} @isAsending={{this.isAsending}}/> --}}
+      {{!-- <th scope="col">
+        Title 
+        <button {{action "sortBy" "title" false}}>{{{this.downArrow}}}</button> 
+        <button {{action "sortBy" "title" true}}>{{{this.upArrow}}}</button>
+      </th>
+      <th scope="col">
+        Author 
+        <button {{action "sortBy" "author" false}}>{{{this.downArrow}}}</button> 
+        <button {{action "sortBy" "author" true}}>{{{this.upArrow}}}</button>
+      </th>
+      <th scope="col">
+        Created 
+        <button {{action "sortBy" "createdAt" false}}>{{{this.downArrow}}}</button> 
+        <button {{action "sortBy" "createdAt" true}}>{{{this.upArrow}}}</button>
+      </th>
+      <th scope="col">
+        Body 
+        <button {{action "sortBy" "body" false}}>{{{this.downArrow}}}</button> 
+        <button {{action "sortBy" "body" true}}>{{{this.upArrow}}}</button>
+        </th> --}}
+    </tr>
+  </thead>
+  <tbody>
+    {{#each this.paginatedContent as |post|}}
+      <tr>
+        {{!-- <td><LinkTo @route="posts.post" @model={{post.id}}>
+            {{post.title}}
+        </LinkTo></td>
+        <td>{{post.author}}</td>
+        <td>{{post.createdAt}}</td>
+         <td>{{post.body}}</td> --}}
+         {{#each this.columns as |column|}}
+           {{#if (is-equal column.property 'title')}}
+             <td><LinkTo @route="posts.post" @model={{post.id}}>
+              {{get post column.property }}
+             </LinkTo></td>
+           {{else}}
+             <td>
+               {{#if (is-equal column.display 'plain')}}
+                 {{get post column.property }}
+                {{else}}
+                  {{formate-date (get post column.property)}}
+               {{/if}}
+             </td>
+           {{/if}}
+         {{/each}}
+      </tr>
+    {{/each}}  
+  </tbody>
+</table>

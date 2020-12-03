@@ -1,0 +1,15 @@
+<button {{action 'moveLeft'}} class="pull-left">{{show-brackets '<'}}</button>
+{{@title}}
+{{!-- <button {{action "sortBy" @sortProperty false}} class="{{if downArrowHilighted 'gold'}}">{{{this.downArrow}}}</button> 
+<button {{action "sortBy" @sortProperty true}} class="{{if upArrowHilighted 'gold'}}">{{{this.upArrow}}}</button> --}}
+<LinkTo @route="posts" @query={{hash sortProps=this.sortProps isAsending=true}} @tagName="button">
+<div class="{{if (es-and this.isSelectedSort @isAsending) 'gold'}}">
+  {{{this.downArrow}}}
+</div>
+</LinkTo>
+<LinkTo @route="posts" @query={{hash sortProps=this.sortProps isAsending=false}} @tagName="button">
+<div class="{{if (es-and this.isSelectedSort (es-not @isAsending)) 'gold'}}">
+  {{{this.upArrow}}}
+</div>
+</LinkTo>
+<button {{action 'moveRight'}} class="pull-right">{{show-brackets '>'}}</button>

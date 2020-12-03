@@ -13,9 +13,9 @@ Router.map(function() {
   this.route('orders');
   this.route('posts', function() {
     this.route('new');
-    this.route('edit', {path: '/edit/:post_id'});
     this.route('post', {path: ':post_id'});
   })
+  this.route('computed-properties');
 });
 
 export default Router;
