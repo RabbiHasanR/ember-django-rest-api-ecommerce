@@ -1,0 +1,9 @@
+<h1>Tutorials List</h1>
+<div class="container">
+  <ul>
+      {{#each this.model as |tutorial|}}
+        <li>{{tutorial.title}}</li>
+      {{/each}}
+  </ul>
+</div>
+{{outlet}}

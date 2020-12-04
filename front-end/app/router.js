@@ -16,6 +16,13 @@ Router.map(function() {
     this.route('post', {path: ':post_id'});
   })
   this.route('computed-properties');
+  this.route('tutorials', function() {
+    this.route('tutorial', {path: ':tutorial_id'}, function() {
+      this.route('show');
+      this.route('edit');
+    });
+    this.route('new');
+  });
 });
 
 export default Router;
