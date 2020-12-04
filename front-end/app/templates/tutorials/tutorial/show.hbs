@@ -1,2 +1,9 @@
-<h1>Show Tuotorial</h1>
-{{outlet}}
+<h1>Show Tutorial</h1>
+<p>Title:{{this.model.title}}</p>
+<p>Free:{{this.model.free}}</p>
+<p>VideoUrl:{{this.model.video_url}}</p>
+<p>Description:{{this.model.description}}</p>
+<LinkTo @route="tutorials.tutorial.edit" @model={{this.model.id}}>
+    Edit Tutorial
+</LinkTo>
+<button {{action 'deleteTutorial'}}>Delete tutorial</button>

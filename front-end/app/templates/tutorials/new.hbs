@@ -1,2 +1,4 @@
 <h1>Create new tutorial</h1>
-{{outlet}}
+<TutorialForm @tutorial={{this.model}}/>
+
+<button {{action 'createTutorial'}}>Save</button>

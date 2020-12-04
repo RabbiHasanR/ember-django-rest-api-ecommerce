@@ -17,11 +17,12 @@ Router.map(function() {
   })
   this.route('computed-properties');
   this.route('tutorials', function() {
-    this.route('tutorial', {path: ':tutorial_id'}, function() {
-      this.route('show');
-      this.route('edit');
-    });
     this.route('new');
+
+    this.route('tutorial', function() {
+      this.route('show',{path: '/show/:tutorial_id'});
+      this.route('edit', {path: '/edit/:id'});
+    });
   });
 });
 

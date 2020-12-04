@@ -1,9 +1,19 @@
 <h1>Tutorials List</h1>
 <div class="container">
-  <ul>
+  <LinkTo @route="tutorials.new">
+    Create New
+  </LinkTo>
+  <div class="col-md-3">
+    <ul>
       {{#each this.model as |tutorial|}}
-        <li>{{tutorial.title}}</li>
+
+        <li><LinkTo @route="tutorials.tutorial.show" @model={{tutorial.id}}>
+          {{tutorial.title}}
+        </LinkTo></li>
       {{/each}}
   </ul>
+  </div>
+  <div class="col-md-9">
+    {{outlet}}
+  </div>
 </div>
-{{outlet}}
