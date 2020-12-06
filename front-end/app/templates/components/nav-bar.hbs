@@ -18,6 +18,32 @@
       <li class="nav-item">
         <LinkTo class="nav-link" @route="tutorials">Tutorials</LinkTo>
       </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route="actions-example">Actions</LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route="users">Users</LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route="monsters">Monsters</LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route="authenticated">Authenticated</LinkTo>
+      </li>
+      <li class="nav-item">
+        <LinkTo class="nav-link" @route="register">Register</LinkTo>
+      </li>
     </ul>
+    <span class="navbar-text">
+      {{#if this.session.currentUser}}
+        <button {{action 'logoutUser'}}>Log out</button> {{this.session.currentUser.email}}---<LinkTo @route="index">
+          Products
+        </LinkTo>
+      {{else}}
+        <LinkTo @route="users">
+          Log In
+        </LinkTo>
+      {{/if}}
+    </span>
   </div>
 </nav>

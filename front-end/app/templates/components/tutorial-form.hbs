@@ -1,4 +1,47 @@
+<AlertMaker>
+<AlertMaker>
+<AlertMaker>
+    click me
+</AlertMaker>
+</AlertMaker>
+</AlertMaker>
 <p>Title:{{input value=@tutorial.title}}</p>
 <p>Free:{{input type='checkbox' checked=@tutorial.free}}</p>
 <p>VideoUrl:{{input value=@tutorial.video_url}}</p>
 <p>Description:{{input value=@tutorial.description}}</p>
+<p>Publish Date: <PikadayInput @onSelection={{action 'publishDateSelectedValue'}} @value={{@tutorial.publishDate}} @format={{"MM-DD-YYYY"}} @readonly={{"readonly"}} @theme={{"dark-theme"}} @placeholder={{"Publish Date"}}/></p>
+<p>Ninja Exist: {{input type='checkbox' checked=this.ninjaExist }}</p>
+<p>Can see ninja: {{input type='checkbox' checked=this.canSeeNinja }}</p>
+<p>
+    <select onchange={{action "selectDifficulty" value="target.value"}} name="deifficulty" id="defficulties-select">
+        {{#each @tutorial.difficulties as |deifficulty|}}
+          <option value={{deifficulty}} id="deifficulty-option">
+              {{deifficulty}}
+          </option>
+        {{/each}}
+        {{#if this.ninjaExist}}
+            <option value="ninja">
+                {{#if this.canSeeNinja}}
+                    A ninja!!
+                {{else}}
+                    Just a normal person, promise.
+                {{/if}}
+            </option>
+              
+          {{/if}}
+    </select>
+
+     {{!-- {{#x-select action=(action "selectDifficulty") value=@tutorial.difficulty id="defficulties-select"}}
+        {{#each @tutorial.difficulties as |deifficulty|}}
+          {{#x-option value=deifficulty }}
+              {{deifficulty}}
+          {{/x-option}}
+        {{/each}}
+    {{/x-select}} --}}
+</p>
+<p>
+    <FileUploader @fileInputChanged={{action 'receiveFile'}}>
+        {{input type='file' id='file-field' value=this.file}} 
+        <img id="preview-image" src={{@tutorial.thumbnailImage}} alt="tutorial thumbnail" class="small-image">
+    </FileUploader>
+</p>

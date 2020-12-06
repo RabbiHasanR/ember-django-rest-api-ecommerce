@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'orders.apps.OrdersConfig',
     'posts.apps.PostsConfig',
     'tutorials.apps.TutorialsConfig',
+    'users.apps.UsersConfig',
+    'monsters.apps.MonstersConfig',
+    'teammemberships.apps.TeammembershipsConfig',
 ]
 
 MIDDLEWARE = [

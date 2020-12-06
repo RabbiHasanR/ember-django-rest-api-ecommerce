@@ -3,7 +3,12 @@
 <p>Free:{{this.model.free}}</p>
 <p>VideoUrl:{{this.model.video_url}}</p>
 <p>Description:{{this.model.description}}</p>
+<p>Difficulty: {{this.model.difficulty}}</p>
+<img src={{this.model.thumbnailImage}} alt="tutorial thumbnail" class="small-image">
 <LinkTo @route="tutorials.tutorial.edit" @model={{this.model.id}}>
     Edit Tutorial
 </LinkTo>
-<button {{action 'deleteTutorial'}}>Delete tutorial</button>
+{{!-- <button {{action 'deleteTutorial'}}>Delete tutorial</button> --}}
+{{#hold-button type="rectangle" action="deleteTutorial"}}
+  Hold to Delete
+{{/hold-button}}

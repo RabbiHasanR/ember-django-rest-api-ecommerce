@@ -1,0 +1,41 @@
+<h2>Hat.io</h2>
+
+{{!-- {{#if this.hasHat}}
+  <p>You're wearing a <span style="color: {{hatColor}};">{{this.hatColor}}</span></p>
+  <button {{action 'takeOffHat'}}>Take off the hat <button {{action 'how' bubbles=false}}>How</button></button>
+{{else}}
+  <p>You're heir is naked:</p>
+  Put on a hat:
+  {{#each colors as |color|}}
+    <button {{action 'putOnHat' color}} style="color: {{color}};">{{color}}</button>
+  {{/each}}
+{{/if}} --}}
+
+{{!-- <ControlAccessory @showModalDialog={{action "showModalDialog"}} @pressRelease={{action "pressRelease"}} @takeOffHat={{action "takeOffHat"}} @itemName="hat" />
+<ControlAccessory @showModalDialog={{action "showModalDialog"}} @pressRelease={{action "pressRelease"}} @takeOffHat={{action "takeOffHat"}} @itemName="necklaces" />
+<ControlAccessory @showModalDialog={{action "showModalDialog"}} @pressRelease={{action "pressRelease"}} @takeOffHat={{action "takeOffHat"}} @itemName="shoes" /> --}}
+
+{{!-- <ControlAccessory @changeItem={{action 'changeItem' 'hatColor'}} @itemName="hat" @itemColor={{this.hatColor}}/>
+<ControlAccessory @changeItem={{action 'changeItem' 'necklaceColor'}} @itemName="necklaces" @itemColor={{this.necklaceColor}}/>
+<ControlAccessory @changeItem={{action 'changeItem' 'shoeColor'}} @itemName="shoes" @itemColor={{this.shoeColor}}/> --}}
+
+{{#each this.itemsDetails as |item index|}}
+  <CollapsibleBox @changeItem2={{action 'changeItem' index}} as |close changeItem3|>
+    <ControlAccessory @changeItem={{changeItem3}} @itemName={{item.itemName}} @itemColor={{item.itemColor}}/>
+    <button {{action close}}>Close</button>
+  </CollapsibleBox>
+{{/each}}
+
+<button {{action 'pressRelease'}}>pressRealease</button>
+
+<button {{action 'removeHat'}}>remove hat</button>
+{{#if isShowingModal}}
+  {{#modal-dialog translucentOverlay=true onClose=(action "closeModalDialog") }}
+    {{modalMessage}}
+  {{/modal-dialog}}
+{{/if}}
+
+
+
+
+   

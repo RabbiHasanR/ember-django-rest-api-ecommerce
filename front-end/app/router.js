@@ -24,6 +24,13 @@ Router.map(function() {
       this.route('edit', {path: '/edit/:id'});
     });
   });
+  this.route('actions-example');
+  this.route('users');
+  this.route('monsters', function() {
+    this.route('monster', {path: ':monster_id'});
+  });
+  this.route('authenticated');
+  this.route('register');
 });
 
 export default Router;

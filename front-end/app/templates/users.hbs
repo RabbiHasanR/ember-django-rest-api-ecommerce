@@ -1,0 +1,15 @@
+{{!-- {{#each this.model as |user|}}
+  <p><button {{action 'loginUser' user}}>Login</button> {{user.name}}...{{user.email}}</p>
+{{/each}} --}}
+
+<h1>Login</h1>
+
+<div class="field">
+  <label>User Name</label>
+  {{input value=userName}}
+</div>
+<div class="field">
+  <label>Password</label>
+  {{input value=password type="password"}}
+</div>
+<div class="btn btn-primary" {{action 'loginUser'}}>Login</div>

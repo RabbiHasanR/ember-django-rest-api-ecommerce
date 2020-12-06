@@ -4,6 +4,8 @@ export default ApplicationSerializer.extend({
     serialize: function(snapshot/*, options*/)
     {
         let json = this._super(...arguments);
+        // console.log('serializer:',snapshot._attributes.thumbnailImage)
+        // console.log('difficulties:', snapshot.record.difficulties)
         json.data.type = Ember.String.capitalize(snapshot.modelName);
         json.data.id = snapshot.id;
         json.data.attributes = snapshot._attributes;
@@ -19,6 +21,7 @@ export default ApplicationSerializer.extend({
             difficulty:snapshot._attributes.difficulty,
             difficulties: snapshot.record.difficulties
         };
+        console.log('json:', json);
         return json
     }
 });

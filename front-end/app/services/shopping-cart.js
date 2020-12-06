@@ -19,7 +19,7 @@ class Item {
 }
 
 export default Service.extend({
-    items: null,
+  items: null,
 
   init() {
     this._super(...arguments);

@@ -5,3 +5,19 @@
 <h1>Computed lt example: {{this.isNumberSmall}}</h1>
 <h1>Computed not example: {{this.copNotProblem}}</h1>
 
+<p>First Name: {{input type='text' value=this.firstName}}</p>
+<p>Last Name: {{input type='text' value=this.lastName}}</p>
+<p>Full Name: {{input type='text' value=this.fullName}}</p>
+<p>Company Name: {{input type='text' value=this.companyName}}</p>
+<p>Bussiness card: {{input type='text' value=this.bussinessCard}}</p>
+
+<h1>Relevant Documentaries</h1>
+{{#each this.documentaries as |documentary|}}
+  {{input value=documentary.name}}, released in {{input value=documentary.release}} for ${{input value=documentary.budget}}, bringing in ${{input value=documentary.boxOffice}}.<br>
+{{/each}}
+
+{{textarea value=this.titles class='big-text-area'}}
+<br>
+<p>Documentaries Budget: {{this.totalDocumentaryBudget}}</p>
+<p>Documentaries Profit: {{this.totalDocumentaryProfit}}</p>
+

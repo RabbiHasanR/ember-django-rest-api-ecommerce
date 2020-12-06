@@ -1,0 +1,16 @@
+<h1>Current Team</h1>
+<div class="team-lineup row">
+  <ul class="list-unstyled">
+    {{#each this.currentTeam.monsters as |monster|}}
+      {{#link-to 'monsters.monster' monster}}
+        <li class="col-xs-6 col-sm-4 col-md-2">
+          <div class="team-member taken">
+            {{monster.name}}, lvl {{monster.level}}
+            <br>
+            <img src={{monster.imageUrl}} />
+          </div>
+        </li>
+      {{/link-to}}
+    {{/each}}
+  </ul>
+</div>

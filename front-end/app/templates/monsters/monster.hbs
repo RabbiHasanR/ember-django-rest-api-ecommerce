@@ -1,0 +1,21 @@
+<div class="monster-card {{if this.model.onTeam 'taken'}}">
+  <span class="name">{{this.model.name}}</span>
+  <span class="pull-right">Level: {{this.model.level}}</span>
+
+  <img src={{this.model.imageUrl}} />
+  <br>
+  {{price price=this.model.price}}
+</div>
+<br>
+{{log 'onteam:' this.model.onTeam}}
+{{#if this.model.onTeam}}
+  <button class="btn" {{action 'remove'}} style="color: red;">
+    Remove from team
+  </button>
+{{else}}
+  <button class="btn" {{action 'add'}}>
+    Add to team
+  </button>
+{{/if}}
+
+{{outlet}}

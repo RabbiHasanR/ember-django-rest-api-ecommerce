@@ -1,7 +1,8 @@
 'use strict';
-
+console.log(process.env.AWS_BUCKET)
 module.exports = function(environment) {
   let ENV = {
+    AWS_BUCKET: process.env.AWS_BUCKET,
     modulePrefix: 'front-end',
     environment,
     rootURL: '/',

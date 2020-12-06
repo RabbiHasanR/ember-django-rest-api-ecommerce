@@ -9,7 +9,7 @@ export default Model.extend({
     publishDate: attr('date'),
     updatedAt: attr('date'),
     createdAt: attr('date'),
-    thumbnailImage: attr('string'),
+    thumbnailImage: attr('file'),
     permalink: attr('string'),
     free: attr('boolean'),
     difficulty: attr('string'),

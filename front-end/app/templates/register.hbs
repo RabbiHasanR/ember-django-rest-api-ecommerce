@@ -1,0 +1,15 @@
+<h1>Register</h1>
+
+<div class="field">
+  <label>User Name</label>
+  {{input value=userName}}
+</div>
+<div class="field">
+  <label>Email</label>
+  {{input value=email}}
+</div>
+<div class="field">
+  <label>Password</label>
+  {{input value=password type="password"}}
+</div>
+<div class="btn btn-primary" {{action 'registerUser'}}>Register</div>
